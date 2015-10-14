@@ -11,11 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return View::make('pages.home');
 });
 
 Route::get('upload', ['uses' => 'UploadFile@view']);
 
 Route::post('submit', ['uses' => 'UploadFile@save']);
 
+Route::get('form', function () {
+	return view('form');
+});
