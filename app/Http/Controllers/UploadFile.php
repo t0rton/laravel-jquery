@@ -29,6 +29,6 @@ class UploadFile extends Controller
 				]);
 		}
 
-		return Response::json(['success' => true]);
+		return Response::json(['success' => true, 'result' => Input::get('name')]);
 	}
 }

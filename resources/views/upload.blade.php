@@ -42,15 +42,15 @@
                 <div class="title">Laravel 5</div>
             </div>
             <div class="info" style="display: none;">
-                <ul class="alert">
-                    <li>alert</li>
-                </ul>
+                <ul class="alert"></ul>
             </div>
             <form method="post" action="">
                 <input type="text" name="name" id="name">
                 <input type="submit" value="submit">
             </form>
-
+            <div class="result" style="display: none;">
+                <ul></ul>
+            </div>
         </div>
     </body>
     <script type="text/javascript">
@@ -59,6 +59,7 @@
                 e.preventDefault();
 
                 var info = $('.info');
+                var result = $('.result');
 
                 var formData = new FormData();
                 formData.append('name', $('#name').val());
@@ -75,12 +76,16 @@
                         console.log(data);
                         
                         info.hide().find('ul').empty();
+                        result.hide().find('ul').empty();
 
                         if(!data.success) {
                             $.each(data.errors, function(index, error){
                                 info.find('ul').append('<li>'+error+'</li>')
                             });
                             info.show();
+                        } else {
+                            result.find('ul').append('<li>'+data.result+'</li>');
+                            result.show();
                         }
                     }
                 });
