@@ -12,13 +12,19 @@
 */
 
 Route::get('/', function() {
-    return View::make('pages.home');
+	return view('pages.home');
 });
 
-Route::get('upload', ['uses' => 'UploadFile@view']);
+Route::get('home', function() {
+	return view('pages.home');
+});
 
 Route::post('submit', ['uses' => 'UploadFile@save']);
 
-Route::get('form', function () {
-	return view('form');
+Route::post('save', function() {
+	return Response::json(['success'=>true]);
+});
+
+Route::get('forms', function () {
+	return view('pages.home');
 });

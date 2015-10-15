@@ -15,10 +15,12 @@ class UploadFile extends Controller
 	{
 		$validator = Validator::make(
 			array(
-				'name' => Input::get('name')
+				'first' => Input::get('first'),
+				'last'  => Input::get('last'),
 			),
 			array(
-				'name' => 'required|max:5|alpha'
+				'first' => 'required|undefined',
+				'last'  => 'required|undefined'
 			)
 		);
 
@@ -29,6 +31,6 @@ class UploadFile extends Controller
 				]);
 		}
 
-		return Response::json(['success' => true, 'result' => Input::get('name')]);
+		return Response::json(['success' => true, 'result' => 'good job']);
 	}
 }

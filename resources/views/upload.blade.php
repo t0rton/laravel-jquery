@@ -11,20 +11,17 @@
 
     </head>
     <body>
-        <div class="container">
-            <div></div>v class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-            <div class="info" style="display: none;">
-                <ul class="alert"></ul>
-            </div>
-            <form method="post" action="">
-                <input type="text" name="name" id="name" class="form-control">
-                <input type="submit" value="submit" class="btn">
-            </form>
-            <div class="result" style="display: none;">
-                <ul></ul>
-            </div>
+        <div class="info" style="display: none;">
+            <ul class="alert"></ul>
+        </div>
+        <form method="post" action="">
+            <input type="text" name="first">first
+            <input type="text" name="last">last
+
+            <input type="submit" value="submit" class="btn">
+        </form>
+        <div class="result" style="display: none;">
+            <ul></ul>
         </div>
     </body>
     <script type="text/javascript">
@@ -36,7 +33,8 @@
                 var result = $('.result');
 
                 var formData = new FormData();
-                formData.append('name', $('#name').val());
+                formData.append('first', $('#first').val());
+                formData.append('last', $('#last').val());
 
                 $.ajax({
                     url: 'submit',
@@ -61,6 +59,9 @@
                             result.find('ul').append('<li>'+data.result+'</li>');
                             result.show();
                         }
+                    },
+                    error:function(error) {
+                        console.log(error);
                     }
                 });
             });
